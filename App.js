@@ -7,11 +7,12 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  TouchableWithoutFeedback,
   View,
 } from "react-native";
 
 import Constants from "expo-constants";
+
+import { Ionicons } from "@expo/vector-icons";
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
           ></Image>
         </View>
 
+        {/* Top frame */}
         <View style={styles.container}>
           <Text style={styles.movieTitle}>Interstellar</Text>
           <Text style={styles.movieDetails}>
@@ -61,6 +63,192 @@ export default function App() {
               </TouchableOpacity>
             </View>
           </View>
+          <View style={styles.rates}>
+            <View style={{ flex: 1, alignItems: "center" }}>
+              <Ionicons
+                name="star"
+                size={24}
+                color="#E6B91F"
+                style={{ marginBottom: 5 }}
+              />
+              <View style={{ flexDirection: "row", alignItems: "flex-end" }}>
+                <Text
+                  style={{ color: "white", fontWeight: "bold", fontSize: 16 }}
+                >
+                  8.6
+                </Text>
+                <Text style={{ color: "lightgrey", fontSize: 13 }}>/10</Text>
+              </View>
+              <Text style={{ color: "lightgrey" }}>1.1M</Text>
+            </View>
+
+            <View style={{ flex: 1, alignItems: "center" }}>
+              <Ionicons
+                name="star-outline"
+                size={24}
+                color="lightgrey"
+                style={{ marginBottom: 5 }}
+              />
+
+              <Text
+                style={{
+                  color: "white",
+                  textTransform: "uppercase",
+                  fontWeight: "bold",
+                  fontSize: 12,
+                }}
+              >
+                Rate this
+              </Text>
+            </View>
+            <View style={{ flex: 1, alignItems: "center" }}>
+              <Text
+                style={{
+                  color: "white",
+                  backgroundColor: "#61C74F",
+                  padding: 2,
+                  marginBottom: 8,
+                }}
+              >
+                74
+              </Text>
+              <Text style={{ color: "white", fontSize: 13 }}>Metascore</Text>
+              <Text style={{ color: "lightgrey", fontSize: 11 }}>
+                46 critic reviews
+              </Text>
+            </View>
+          </View>
+        </View>
+
+        {/* Bottom frame */}
+        <View style={styles.container}>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <Text style={{ color: "white", fontSize: 20, fontWeight: "400" }}>
+              Top Billed Cast
+            </Text>
+            <Text
+              style={{
+                color: "#109DE3",
+                textTransform: "uppercase",
+                fontSize: 14,
+              }}
+            >
+              See all
+            </Text>
+          </View>
+
+          <ScrollView horizontal>
+            <View
+              style={{
+                width: 150,
+                backgroundColor: "#2A2A2A",
+                marginTop: 10,
+                marginRight: 10,
+              }}
+            >
+              <Image
+                style={styles.actorPicture}
+                source={require("./assets/images/actors/matthew-mcconaughey.jpeg")}
+              ></Image>
+              <Text
+                numberOfLines={1}
+                style={{ color: "white", paddingHorizontal: 10, fontSize: 12 }}
+              >
+                Matthew McConaughey
+              </Text>
+              <Text
+                numberOfLines={1}
+                style={{
+                  color: "lightgrey",
+                  paddingHorizontal: 10,
+                  fontSize: 12,
+                  marginBottom: 10,
+                }}
+              >
+                Cooper
+              </Text>
+            </View>
+
+            <View
+              style={{
+                width: 150,
+                backgroundColor: "#2A2A2A",
+                marginTop: 10,
+                marginRight: 10,
+              }}
+            >
+              <Image
+                style={styles.actorPicture}
+                source={require("./assets/images/actors/anne-hathaway.jpeg")}
+              ></Image>
+              <Text
+                numberOfLines={1}
+                style={{ color: "white", paddingHorizontal: 10, fontSize: 12 }}
+              >
+                Anne Hathaway
+              </Text>
+              <Text
+                numberOfLines={1}
+                style={{
+                  color: "lightgrey",
+                  paddingHorizontal: 10,
+                  fontSize: 12,
+                  marginBottom: 10,
+                }}
+              >
+                Brand
+              </Text>
+            </View>
+
+            <View
+              style={{
+                width: 150,
+                backgroundColor: "#2A2A2A",
+                marginTop: 10,
+                marginRight: 10,
+              }}
+            >
+              <Image
+                style={styles.actorPicture}
+                source={require("./assets/images/actors/jessica-chastain.jpeg")}
+              ></Image>
+              <Text
+                numberOfLines={1}
+                style={{ color: "white", paddingHorizontal: 10, fontSize: 12 }}
+              >
+                Jessica Chastain
+              </Text>
+              <Text
+                numberOfLines={1}
+                style={{
+                  color: "lightgrey",
+                  paddingHorizontal: 10,
+                  fontSize: 12,
+                  marginBottom: 10,
+                }}
+              >
+                Murph
+              </Text>
+            </View>
+          </ScrollView>
+
+          <View>
+            <Text style={{ color: "white", marginTop: 10 }}>Director</Text>
+            <Text style={{ color: "white", fontSize: 12, color: "lightgrey" }}>
+              Christopher Nolan
+            </Text>
+            <Text style={{ color: "white", marginTop: 10 }}>Writers</Text>
+            <Text style={{ color: "white", fontSize: 12, color: "lightgrey" }}>
+              Jonathan Nolan (written by) and Christopher Nolan (written by)
+            </Text>
+            <Text></Text>
+          </View>
         </View>
       </SafeAreaView>
     </ScrollView>
@@ -90,6 +278,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     backgroundColor: "#202020",
     paddingVertical: 10,
+    marginBottom: 20,
   },
 
   movieTitle: {
@@ -120,5 +309,17 @@ const styles = StyleSheet.create({
   movieSynopsis: {
     color: "white",
     lineHeight: 25,
+  },
+
+  rates: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+
+  actorPicture: {
+    width: 150,
+    height: 190,
+    resizeMode: "cover",
+    marginBottom: 5,
   },
 });
